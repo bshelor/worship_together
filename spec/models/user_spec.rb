@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
     let(:user) { User.create(name: 'John Doe', email: 'jdoe@example.com', password: 'password') }
