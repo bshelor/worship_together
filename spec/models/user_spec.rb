@@ -11,33 +11,33 @@ describe User do
     it { should be_valid }
 
     describe "empty name" do
-	before { user.name = '' }
+	      before { user.name = '' }
 
-	it { should_not be_valid }
+	      it { should_not be_valid }
     end
 
     describe "blank name" do
-	before { user.name = ' ' }
+	      before { user.name = ' ' }
 
-	it { should_not be_valid }
+	      it { should_not be_valid }
     end
 
     describe "empty email" do
-	before { user.email = '' }
+	      before { user.email = '' }
 
-	it { should_not be_valid }
+	      it { should_not be_valid }
     end
 
     describe "blank email" do
-	before { user.email = ' ' }
+	      before { user.email = ' ' }
 
-	it { should_not be_valid }
+	      it { should_not be_valid }
     end
 
     describe "empty password" do
-	before { user.password = '' }
+	      before { user.password = '' }
 
-	it { should_not be_valid }
+	      it { should_not be_valid }
     end
 
     describe "blank password" do
