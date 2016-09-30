@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 Rails.application.routes.draw do
+=======
+WorshipTogether::Application.routes.draw do
+  resources :users
+>>>>>>> 3258a75cb0d4afbf384806f3a91cc86858f834a4
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
