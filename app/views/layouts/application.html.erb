@@ -1,3 +1,5 @@
+<!--  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +12,37 @@
 
 <% flash.each do |type, message| %>
     <p class="ALERT-<%= type %>"><%= message %></p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>  
+
+//-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WorshipTogether</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav>
+    <ul>
+	<% if logged_in? %>
+	    <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+	<% else %>
+	    <li><%= link_to 'Log In', login_path %></li>
+	<% end %>
+    </ul>
+</nav>
+
+<% flash.each do |type, message| %>
+    <p class="alert alert-<%= type %>"><%= message %></p>
 <% end %>
 
 <%= yield %>
