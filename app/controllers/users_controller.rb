@@ -4,22 +4,22 @@ class UsersController < ApplicationController
     before_action :ensure_admin, only: [:destroy]
 
     def index
-	@users = User.all
+		@users = User.all
     end
 
     def new
-	@user = User.new
+		@user = User.new
     end
 
     def create
-	@user = User.new(user_params)
-	if @user.save
-	    flash[:success] = "Welcome to the site, #{@user.name}"
-	    redirect_to @user
-	else
-	    flash.now[:danger] = "Unable to create new user"
-	    render 'new'
-	end
+		@user = User.new(user_params)
+		if @user.save
+		    flash[:success] = "Welcome to the site, #{@user.name}"
+		    redirect_to @user
+		else
+		    flash.now[:danger] = "Unable to create new user"
+		    render 'new'
+		end
     end
 
     def show
