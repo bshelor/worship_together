@@ -15,6 +15,15 @@ class ChurchesController < ApplicationController
 	    render 'new'
 	end
     end
+    
+    def edit
+    end
+    
+    def destroy
+    end
+    
+    def update
+    end
 
     private
 
@@ -27,4 +36,6 @@ class ChurchesController < ApplicationController
 							      :finish_time,
 							      :location ] )
     end
+    
+    
 end

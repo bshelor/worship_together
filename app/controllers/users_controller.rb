@@ -23,19 +23,34 @@ class UsersController < ApplicationController
     end
 
     def show
-	@user = User.find(params[:id])
-    rescue
-	flash[:danger] = "Unable to find user"
-	redirect_to users_path
+		@user = User.find(params[:id])
+	    rescue
+		flash[:danger] = "Unable to find user"
+		redirect_to users_path
     end
 
     def edit
+    	@user = User.find(params(:id))
     end
+    
+    def update
+    	@user = User.find(params(:id))
+    	if @user.update(user_params)
+    		flash[:success] = "Your profile has been modified"
+    		redirect_to @user
+    	else
+    		flash[:danger] = "Unable to update profile"
+    		render 'edit'
+    	end
+	end
+	
+	def destroy
+	end
 
     private
 
     def user_params
-	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     def ensure_user_logged_in
@@ -51,9 +66,9 @@ class UsersController < ApplicationController
 	    flash[:danger] = "Cannot edit other user's profiles"
 	    redirect_to root_path
 	end
-    rescue
-	flash[:danger] = "Unable to find user"
-	redirect_to users_path
+	    rescue
+		flash[:danger] = "Unable to find user"
+		redirect_to users_path
     end
 
     def ensure_admin
@@ -62,4 +77,5 @@ class UsersController < ApplicationController
 	    redirect_to root_path
 	end
     end
+    
 end

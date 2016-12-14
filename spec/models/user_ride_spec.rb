@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe UserRide do
     let(:user_ride) { FactoryGirl.create(:user_ride) }
