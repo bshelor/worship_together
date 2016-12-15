@@ -1,0 +1,34 @@
+<h1>Home page for <%= @church.name %></h1>
+
+<ul>
+    <li><%= @church.name %></li>
+    <li><%= link_to "official web site", @church.web_site %></li>
+    <li><img src=<%= @church.picture %>></li>
+    <li><%= @church.description %></li>
+
+    <% if logged_in? and @user.church == @church %>
+        <p>You attend</p>
+    <% elsif logged_in? %>
+        <%= button_to "Attend this church", user_path(current_user, church_id: @church.id), method: :patch %>
+    <% end %>
+    
+    <% if logged_in? and @user == @church.user %>
+        <p>You manage</p>
+    <% end %>
+</ul>
+
+<% @church.services.each do |service| %>
+	<div class="<%= "service service-"+service.id.to_s %>">
+		<p><%= service.start_time %></p>
+		<p><%= service.finish_time %></p>
+		<p><%= service.location %></p>
+		<p><%= service.day_of_week %></p>
+	</div>
+<% end %>
+	
+<% User.where(:church_id == @church.id).each do |user| %>
+    <div class="<%= "user user-"+user.id.to_s %>">
+        <p><%= link_to user.name, user_path(user) %></p>
+    </div>
+<% end %>
+

@@ -1,0 +1,20 @@
+<% if logged_in? and current_user == @ride.user %>
+    <p>You are providing</p>
+<% elsif logged_in? and @ride.users.include?(current_user) %>
+    <p>You are riding</p>
+<% elsif logged_in? %>
+    <%= button_to "Claim ride", user_path(current_user, ride_id: @ride.id), method: :patch %>
+<% end %>
+
+
+<ul>
+    <p>Church Name: <%= @ride.service.church.name %></p>
+    <p>Location: <%= @ride.service.location %></p>
+    <li><%= link_to @ride.user.name, user_path(@ride.user) %></li>
+    <p>Leave time: <%= @ride.leave_time %></p>
+    <p>Return time: <%= @ride.return_time %></p>
+    <p>Meet at: <%= @ride.meeting_location %></p>
+    <p>Vehicle: <%= @ride.vehicle %></p>
+    <p>Seats available: <%= @ride.seats_available %></p>
+    <p>Number of Seats Total: <%= @ride.number_of_seats %></p>
+</ul>

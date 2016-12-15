@@ -11,16 +11,15 @@ FactoryGirl.define do
     end
 
     factory :church do
-      user
-      name "testing this thing"
-      web_site "www.example.com"
-      description "Some church in the middle of nowhere"
-
-	transient { num_services 1 }
-
-	after(:create) do |church, evaluator|
-	    create_list(:service, evaluator.num_services, church: church)
-	end
+		transient { num_services 1 }
+	
+			after(:create) do |church, evaluator|
+			    create_list(:service, evaluator.num_services, church: church)
+			end
+		user
+	    name "testing this thing"
+	    web_site "www.example.com"
+	    description "Some church in the middle of nowhere"
     end
 
     factory :service do

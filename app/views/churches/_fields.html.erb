@@ -1,16 +1,19 @@
-<%= f.label :name, 'Church Name' %>
+<%= f.label :name %>
 <%= f.text_field :name %>
 
-<%= f.label :web_site %>
+<%= f.label :web_site, "Web site" %>
 <%= f.text_field :web_site %>
 
 <%= f.label :picture %>
 <%= f.text_field :picture %>
 
-<%= f.label :description %>
+<%= f.label :description, "Description" %>
 <%= f.text_area :description %>
 
 <%= f.fields_for :services do |builder| %>
+    <%= builder.label :day_of_week %>
+    <%= builder.text_field :day_of_week %>
+
     <%= builder.label :start_time %>
     <%= builder.text_field :start_time %>
 

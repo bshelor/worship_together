@@ -1,0 +1,46 @@
+<li>
+    <ul>
+        <li><%= @service.day_of_week %></li>
+        <li><%= @service.location %></li>
+        <li><%= @service.start_time %></li>
+        <li><%= @service.finish_time %></li>
+    </ul>
+</li>
+
+<% @service.rides.each do |ride| %>
+    <div class="<%= "ride ride-" + ride.id.to_s %>">
+        <p>(provider)</p>
+        <p>(rider)</p>
+        <p>ride.date</p>
+        <p>ride.seats_available</p>
+        <p>ride.meeting_location</p>
+        <li><%= link_to 'more info', ride_path(ride) %></li>
+    </div>
+<% end %>
+
+<%= form_for [@service, Ride.new] do |f| %>
+    <%= f.label :date %>
+    <%= f.text_field :date %>
+    
+    <%= f.label :leave_time %>
+    <%= f.text_field :leave_time %>
+    
+    <%= f.label :return_time %>
+    <%= f.text_field :return_time %>
+    
+    <%= f.label :meeting_location %>
+    <%= f.text_field :meeting_location %>
+    
+    <%= f.label :vehicle %>
+    <%= f.text_field :vehicle %>
+    
+    <%= f.label :seats_available %>
+    <%= f.text_field :seats_available %>
+    
+    <%= f.label :number_of_seats %>
+    <%= f.text_field :number_of_seats %>
+    
+    <%= f.submit "Offer ride" %>
+<% end %>
+    
+    
